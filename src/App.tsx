@@ -19,7 +19,7 @@ function App() {
           ></path>
         </svg>
       </div>
-      <p className="mt-6 tracking-wide">
+      <p className="mt-6 tracking-wide animate-pulse">
         Edit <code>src/App.js</code> and save to reload.
       </p>
       <div className="mt-4 flex justify-center">

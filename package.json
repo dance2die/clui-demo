@@ -19,7 +19,9 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "tailwindcss": "^1.6.0",
-    "typescript": "~3.9.7"
+    "typescript": "~3.9.7",
+    "@replit/clui-input": "0.0.16",
+    "@replit/clui-session": "0.0.1"
   },
   "scripts": {
     "start": "run-p watch:css react-scripts:start",
