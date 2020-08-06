@@ -1,4 +1,91 @@
-import React from 'react';
+import React from "react";
+
+import input from "@replit/clui-input";
+
+const scripts = {
+  start: "run-p env:dev watch:css react-scripts:start",
+  build: "run-s env:prod build:css react-scripts:build",
+  test: "react-scripts test"
+};
+
+// console.info(`scripts`, Object.entries(scripts));
+
+/**
+ * 1. build commands
+ * 2. show a full command in run
+ */
+
+const rootCommand = {
+  commands: {
+    ...Object.keys(scripts).reduce((cmds, cmd) => {
+      cmds = {
+        ...cmds,
+        [cmd]: {
+          run(args: any) {
+            console.info(`cmd(${cmd}) args =>`, args);
+          }
+        }
+      };
+      return cmds;
+    }, {})
+  }
+};
+
+// console.info(`rootCommand2`, rootCommand2);
+
+// const rootCommand = {
+//   commands: {
+//     open: {
+//       commands: {
+//         sesame: {
+//           run: (args) => {
+//             /* do something */
+//             console.info(`run args`, args);
+//           }
+//         }
+//       }
+//     }
+//   }
+// };
+
+const update = input({
+  command: rootCommand,
+  onUpdate: (updates) => {
+    console.info(`onUpdate updates`, updates);
+    if (updates.run) updates.run();
+    /* Update #1: `updates.options` will be
+     * [
+     *   {
+     *     "value": "open",
+     *     "inputValue": "open",
+     *     "searchValue": "o",
+     *     "cursorTarget": 4
+     *   }
+     * ]
+     */
+    /* Update #2: `updates.options` will be
+     * [
+     *   {
+     *     "value": "sesame",
+     *     "inputValue": "open sesame",
+     *     "searchValue": "s",
+     *     "cursorTarget": 12
+     *   }
+     * ]
+     */
+  }
+});
+
+// /* Update #1 */
+// update({ value: "o", index: 1 });
+
+// /* Update #2 */
+// update({ value: "open s", index: 6 });
+
+update({ value: "start", index: 6 });
+// update({ value: "build", index: 6, args: { port: "2222" } });
+// update({ value: "test", index: 6, args: { port: "3333" } });
+
 
 function App() {
   return (
