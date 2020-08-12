@@ -19,6 +19,9 @@ const rootCommand: ICommand = {
           }, args: {
             port: {
               type: 'int',
+            },
+            name: {
+              type: 'string'
             }
           }
 
@@ -40,9 +43,9 @@ const update = createInput({
 });
 
 
-update({ value: "start --port 1245" });
-// update({ value: "build", index: 6, args: { port: "2222" } });
-// update({ value: "test", index: 6, args: { port: "3333" } });
+update({ value: "NODE_PATH=dev start --port 1234" });
+update({ value: "NODE_PATH=dev build --port 2222 --name 'awesome name'" });
+update({ value: "NODE_PATH=dev test --port 3333" });
 
 
 function App() {
