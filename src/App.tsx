@@ -21,7 +21,7 @@ const rootCommand: ICommand = {
               type: 'int',
             },
             name: {
-              type: 'string'
+              type: 'int'
             }
           }
 
